@@ -22,4 +22,4 @@ I left a developer version if you wan't to remake it, it's a bit different and i
 ### INFO
 
 This is a inventory script with a nice UI (see video)
-* [PREVIEW VIDEO](https://streamable.com/z7mh6) 
+* [PREVIEW VIDEO](https://streamable.com/5uo4t) 
