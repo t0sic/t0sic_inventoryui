@@ -20,6 +20,7 @@ Simply drag and drop it in your resource folder and add it to your sever cfg. To
 
 ### FOR DEVELOPERS
 I left a developer version if you wan't to remake it, it's a bit different and if you wan't to make proximity and weapon whowing features please contact me as I will happily help with the javascript.
+My discord is t0sic#1686
 
 ### INFO
 
