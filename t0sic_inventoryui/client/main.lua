@@ -85,3 +85,11 @@ RegisterNUICallback('use', function(data)
         action = "close"
     })
 end)
+AddEventHandler('onResourceStop', function(resource)
+    if resource == GetCurrentResourceName() then
+
+            SetNuiFocus(false, false)
+            SendNUIMessage({ action = "close"})
+
+    end
+end)
