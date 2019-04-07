@@ -14,6 +14,8 @@ You need ESX
 
 ### INSTALATION
 
+Do not rename the resource, it won't work if you do
+
 Simply drag and drop it in your resource folder and add it to your sever cfg. To add a picture for each item you need to go to assets -> css -> items.css and add the item you want with a # before and then specify what picture you wan't and the size of the picture. The name of the item you add has to be the exact as it is in the database and it's important that you're not adding the label but the name. I left some examples in the css folder. To open the meny press Y
 
 ### FOR DEVELOPERS
