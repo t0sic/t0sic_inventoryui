@@ -108,7 +108,7 @@ end)
 RegisterNUICallback("drop", function(data)
     print(data.item, data.count)
     TriggerServerEvent('esx:removeInventoryItem', 'item_standard', data.item , data.count)
-    TriggerServerEvent('esx:removeInventoryItem', 'item_weapon', data.item, nil)
+    TriggerServerEvent('esx:removeInventoryItem', 'item_weapon', data.item, data.count)
 end)
 
 RegisterNUICallback('use', function(data)
