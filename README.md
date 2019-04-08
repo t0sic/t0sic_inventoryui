@@ -6,7 +6,7 @@ Hello I decided to make my first release since I haven't really contributed to t
 ### LICENSE
 
 You are free to remake this however you wan't, however do not reupload it and do not sell it.
-
+Credits To @Kalu / @Kashnars For Doing the money part, I just took their wallet script and remade it https://forum.fivem.net/t/release-allcity-wallet-esx/145419 If you wan't me to remove it please pm me
 
 ### REQUIERMENTS
 
