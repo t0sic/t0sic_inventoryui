@@ -20,6 +20,7 @@ $('document').ready(function() {
             }
             test1.forEach(function(item) {
                 $('.item-inner').append(`<div class="${item[0]} default" id="${item[0]}"><div>`);
+                console.log(item[0])
                 $(`#${item[0]}`).html(item[1])
                 $(`#${item[0]}`).css({
                     'padding': '1px',
@@ -38,6 +39,9 @@ $('document').ready(function() {
             test1 = []
         }
         test()
+        document.getElementById('cash').innerHTML = event.data.wallet
+        document.getElementById('blackmoney').innerHTML = event.data.black_money
+        document.getElementById('bank').innerHTML = event.data.bank
     });
     document.onkeyup = function(data) {
         if (data.which == 27 || data.which == 8) {

@@ -171,10 +171,96 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 180%;
 }
 
+.cash {
+  width: 12%;
+  height: 5%;
+  background: rgb(25, 25, 35);
+  position: absolute;
+  color: var(--main-color);
+  text-align: center;
+  margin-left: 2%;
+  margin-top: 51.2%;
+  border: 1px solid var(--main-color);
+}
+
+#cash::after {
+  content: '$';
+  color: gray;
+  margin-left: 4px;
+}
+
+#cash {
+  margin-top: 5%;
+  font-size: 20px;
+}
+
+.blackmoney {
+  width: 12%;
+  height: 5%;
+  background: rgb(25, 25, 35);
+  position: absolute;
+  color: var(--main-color);
+  text-align: center;
+  margin-left: 14%;
+  margin-top: 51.2%;
+  border: 1px solid var(--main-color);
+}
+
+#blackmoney::after {
+  content: '$';
+  color: gray;
+  margin-left: 4px;
+}
+
+#blackmoney {
+  margin-top: 5%;
+  font-size: 20px;
+}
+
+.bank {
+  width: 12%;
+  height: 5%;
+  background: rgb(25, 25, 35);
+  position: absolute;
+  color: var(--main-color);
+  text-align: center;
+  margin-left: 26%;
+  margin-top: 51.2%;
+  border: 1px solid var(--main-color);
+}
+
+.fa-money-check, .fa-money-bill-alt {
+  float: left;
+  font-size: 190%;
+  margin-left: -42%;
+  position: absolute;
+  margin-top: 4%;
+}
+
+.fa-money-bill {
+  color: red;
+  float: left;
+  font-size: 190%;
+  margin-left: -42%;
+  position: absolute;
+  margin-top: 5%;
+}
+
+#bank::after {
+  content: '$';
+  color: gray;
+  margin-left: 4px;
+}
+
+#bank {
+  margin-top: 5%;
+  font-size: 20px;
+}
+
 .item-container {
   width: 13%;
   height: 75.5%;
-  margin-top: 5%;
+  margin-top: 10%;
   float: right;
   background: rgb(25, 25, 35);
   margin-right: 3%;
@@ -212,19 +298,6 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 100%;
 }
 
-.arrow {
-  background-size: 90%; 
-  width: 40%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  background: no-repeat;
-}
-
-.arrow {
-	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MzcgNzExIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzFmMWUyYjt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93PC90aXRsZT48ZyBpZD0iTGFnZXJfMiIgZGF0YS1uYW1lPSJMYWdlciAyIj48ZyBpZD0iTGFnZXJfMS0yIiBkYXRhLW5hbWU9IkxhZ2VyIDEiPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxMywwLDAsNDA0VjU5N0w0NjEsMGg1NlMwLDY2NywwLDY3MXY0MEw1MzcsMCIvPjwvZz48L2c+PC9zdmc+);
-}
-
 .heading-2 {
   color: white;
   position: absolute;
@@ -234,7 +307,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .overlay {
-  background-image: linear-gradient(to right top, rgba(102, 255, 235, 0.8),rgba(82, 250, 241, 0.8), rgba(61, 245, 246, 0.8), rgba(38, 239, 251, 0.8), rgba(0, 233, 255, 0.8));
     width: 100%;
     height: 100%;
     margin: 0;
@@ -255,7 +327,7 @@ input[type=number]::-webkit-outer-spin-button {
 .item-section {
     width: 40%;
     height: 91%;
-    margin-top: 2%;
+    margin-top: 6%;
     margin-left: 2%;
     float: left;
     background: no-repeat;
