@@ -1,3 +1,5 @@
+-- Credits To @Kalu / @Kashnars For Doing this, I just took their wallet script and remade it https://forum.fivem.net/t/release-allcity-wallet-esx/145419 If you wan't me to remove it please pm me-->
+
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local function getMoneyFromUser(id_user)

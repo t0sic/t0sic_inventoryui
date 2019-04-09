@@ -10,6 +10,8 @@ $('document').ready(function() {
             clearDocument()
             $.post('http://t0sic_inventoryui/NUIFocusOff', JSON.stringify({}));
         }
+
+        
         function test(){
             let test = event.data.items
             let test1 = []
@@ -20,7 +22,6 @@ $('document').ready(function() {
             }
             test1.forEach(function(item) {
                 $('.item-inner').append(`<div class="${item[0]} default" id="${item[0]}"><div>`);
-                console.log(item[0])
                 $(`#${item[0]}`).html(item[1])
                 $(`#${item[0]}`).css({
                     'padding': '1px',
@@ -42,9 +43,10 @@ $('document').ready(function() {
         document.getElementById('cash').innerHTML = event.data.wallet
         document.getElementById('blackmoney').innerHTML = event.data.black_money
         document.getElementById('bank').innerHTML = event.data.bank
+        document.getElementById('job').innerHTML = event.data.label
     });
     document.onkeyup = function(data) {
-        if (data.which == 27 || data.which == 8) {
+        if (data.which == 27) {
             $('.overlay').hide();
             clearDocument()
             $.post('http://t0sic_inventoryui/NUIFocusOff', JSON.stringify({}));
@@ -78,11 +80,34 @@ $('document').ready(function() {
         if(container.id == 'drag2') {
         var selectedItem = el.id
         $('#drag2').children().css('background-color', 'rgb(31, 30, 43)');
-        $('#drag2').children().removeClass('selected')
+        $('#drag2').children().removeClass('selected');
+        $('#money').removeClass('selected');
+        $('#money').css('background-color', 'rgb(31, 30, 43)');
+        $('#blackcash').removeClass('selected');
+        $('#blackcash').css('background-color', 'rgb(31, 30, 43)');
         $(`#${selectedItem}`).addClass('selected');
         $(`#${selectedItem}`).css('background-color', '#1d3459');
         }
     });
+
+    document.getElementById('money').addEventListener('click', function(event) {
+        $('#drag2').children().css('background-color', 'rgb(31, 30, 43)');
+        $('#drag2').children().removeClass('selected')
+        $(`#blackcash`).removeClass('selected');
+        $(`#blackcash`).css('background-color', 'rgb(31, 30, 43)');
+        $(`#money`).addClass('selected');
+        $(`#money`).css('background-color', '#1d3459');
+    })
+
+    document.getElementById('blackcash').addEventListener('click', function(event) {
+        $('#drag2').children().css('background-color', 'rgb(31, 30, 43)');
+        $('#drag2').children().removeClass('selected')
+        $(`#money`).removeClass('selected');
+        $(`#money`).css('background-color', 'rgb(31, 30, 43)');
+        $(`#blackcash`).addClass('selected');
+        $(`#blackcash`).css('background-color', '#1d3459');
+    })
+
     document.getElementById('button-use').addEventListener('click', function(event) {
         var itemSelected = document.getElementsByClassName('selected')[0].id;
         $.post('http://t0sic_inventoryui/use', JSON.stringify({
@@ -91,7 +116,17 @@ $('document').ready(function() {
     })
     document.getElementById("button").addEventListener("click", function(event) {
         var itemSelected = document.getElementsByClassName('selected')[0];
-        if (Number(document.getElementById('drop-count').value) > document.getElementsByClassName('selected')[0].innerText) {
+        if (document.getElementsByClassName('selected')[0].id == 'money') {
+            let amount = Number(document.getElementById('drop-count').value)
+            $.post('http://t0sic_inventoryui/dropcash', JSON.stringify({
+                count: amount
+            }));
+        } else if (document.getElementsByClassName('selected')[0].id == 'blackcash') {
+            let amount2 = Number(document.getElementById('drop-count').value)
+            $.post('http://t0sic_inventoryui/dropblackcash', JSON.stringify({
+                count: amount2
+            }));
+        } else if (Number(document.getElementById('drop-count').value) > document.getElementsByClassName('selected')[0].innerText) {
             console.log(`You don't have that many ${document.getElementsByClassName('selected')[0].id}('s)`);
         } else if(Number(document.getElementById('drop-count').value) > 0) {
             $.post('http://t0sic_inventoryui/drop', JSON.stringify({

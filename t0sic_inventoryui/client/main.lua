@@ -12,6 +12,22 @@ local Keys = {
 
   -- Credits To @Kalu / @Kashnars For Doing the money part, I just took their wallet script and remade it https://forum.fivem.net/t/release-allcity-wallet-esx/145419 If you wan't me to remove it please pm me-->
 
+  ESX = nil
+
+  Citizen.CreateThread(function()
+  
+      while ESX == nil do
+          TriggerEvent("esx:getSharedObject", function(sharedObject) ESX = sharedObject end)
+          Citizen.Wait(50)
+      end
+  
+      while ESX.IsPlayerLoaded() == false do
+          Citizen.Wait(5)
+      end
+  
+      PlayerData = ESX.GetPlayerData()
+  end)
+
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
@@ -45,28 +61,25 @@ end)
 
 AddEventHandler("allcity_wallet:setValues", function(wallet, bank, black_money, society)
 
+    local label = PlayerData.job.grade_label
+
 	SendNUIMessage({
 		wallet = wallet,
-		bank = bank,
+        bank = bank,
+        label = PlayerData.job.grade_label,
 		black_money = black_money
 		})	
 
 end)
 
-ESX = nil
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+    PlayerData = xPlayer
+end)
 
-Citizen.CreateThread(function()
-
-    while ESX == nil do
-        TriggerEvent("esx:getSharedObject", function(sharedObject) ESX = sharedObject end)
-        Citizen.Wait(50)
-    end
-
-    while ESX.IsPlayerLoaded() == false do
-        Citizen.Wait(5)
-    end
-
-    PlayerData = ESX.GetPlayerData()
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+    PlayerData.job = job
 end)
 
 function getInventory()
@@ -74,6 +87,16 @@ function getInventory()
     local playerPed = PlayerPedId()
     local inventory = PlayerData["inventory"]
     
+    RegisterNetEvent('esx:playerLoaded')
+    AddEventHandler('esx:playerLoaded', function(xPlayer)
+        PlayerData = xPlayer
+    end)
+
+    RegisterNetEvent('esx:setJob')
+    AddEventHandler('esx:setJob', function(job)
+        PlayerData.job = job
+    end)
+
     local item = {
         ["name"] = "test", ["amount"] = 2
     }
@@ -106,15 +129,23 @@ RegisterNUICallback('NUIFocusOff', function()
 end)
 
 RegisterNUICallback("drop", function(data)
-    print(data.item, data.count)
     TriggerServerEvent('esx:removeInventoryItem', 'item_standard', data.item , data.count)
     TriggerServerEvent('esx:removeInventoryItem', 'item_weapon', data.item, data.count)
 end)
 
 RegisterNUICallback('use', function(data)
-    print(data.item)
     TriggerServerEvent('esx:useItem', data.item)
     SendNUIMessage({
         action = "close"
     })
+end)
+
+RegisterNUICallback("dropcash", function(data)
+    TriggerServerEvent('esx:removeInventoryItem', 'item_money',  ESX.Math.GroupDigits(PlayerData["money"]) , tonumber(data.count))
+end)
+
+RegisterNUICallback("dropblackcash", function(data)
+    print(data.count)
+    PlayerData = ESX.GetPlayerData()
+    TriggerServerEvent('esx:removeInventoryItem', 'item_account',  'black_money' , tonumber(data.count))
 end)

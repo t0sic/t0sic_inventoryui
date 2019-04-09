@@ -42,3 +42,8 @@
     background: url(https://gamepedia.cursecdn.com/thedeadlinger_gamepedia/thumb/3/3c/Weapon_melee_baseballbat_wooden.png/150px-Weapon_melee_baseballbat_wooden.png?version=0c306666934df721bb14d98bba49c7a9) no-repeat;
     background-size: 70%;
 }
+
+#WEAPON_ASSAULTRIFLE {
+    background: url(http://pngimg.com/uploads/ak47/ak47_PNG15471.png) no-repeat;
+    background-size: 100%;
+}
