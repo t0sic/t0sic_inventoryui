@@ -145,7 +145,6 @@ RegisterNUICallback("dropcash", function(data)
 end)
 
 RegisterNUICallback("dropblackcash", function(data)
-    print(data.count)
     PlayerData = ESX.GetPlayerData()
     TriggerServerEvent('esx:removeInventoryItem', 'item_account',  'black_money' , tonumber(data.count))
 end)
