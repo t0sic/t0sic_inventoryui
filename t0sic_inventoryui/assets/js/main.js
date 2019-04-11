@@ -76,8 +76,8 @@ $('document').ready(function() {
             $(`#${el.id}`).hide()
         }
     });
-    containers.on('cancel', function(el, container, source){
-        if(container.id == 'drag2') {
+    
+    containers.on('drag', function(el, source){
         var selectedItem = el.id
         $('#drag2').children().css('background-color', 'rgb(31, 30, 43)');
         $('#drag2').children().removeClass('selected');
@@ -87,9 +87,8 @@ $('document').ready(function() {
         $('#blackcash').css('background-color', 'rgb(31, 30, 43)');
         $(`#${selectedItem}`).addClass('selected');
         $(`#${selectedItem}`).css('background-color', '#1d3459');
-        }
     });
-
+    
     document.getElementById('money').addEventListener('click', function(event) {
         $('#drag2').children().css('background-color', 'rgb(31, 30, 43)');
         $('#drag2').children().removeClass('selected')
